@@ -46,6 +46,13 @@ Every missing acceptance criterion is a future rework cycle.
 
 ---
 
+
+## Related Tools
+
+- [Proof Loop](https://github.com/LeoStehlik/proof-loop) - use after Brief Master when the task needs frozen acceptance criteria, separate verifier roles, and durable proof artifacts.
+- [Loopsmith](https://github.com/LeoStehlik/loopsmith) - use when recurring weak briefs or agent failures should become eval cases and promotion decisions.
+- [Sovereign Brain](https://github.com/LeoStehlik/decoupled-agent-memory) - use as source-backed context for briefs that need current decisions, project state, or changed evidence.
+
 ## Installation
 
 ### OpenClaw

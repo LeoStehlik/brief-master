@@ -1,5 +1,7 @@
 # brief-master
 
+![Validate](https://github.com/LeoStehlik/brief-master/actions/workflows/validate.yml/badge.svg)
+
 Write sharp, precise agent briefs for OpenClaw. Zero wasted tokens. Zero vague instructions.
 
 Every bad brief costs you a rework cycle. brief-master extracts 9 dimensions of intent, asks max 3 clarifying questions, applies the right format for your target agent, runs a token efficiency audit, and delivers one clean brief ready to fire.

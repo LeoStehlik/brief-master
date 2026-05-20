@@ -4,11 +4,18 @@
 
 Write sharp, precise agent briefs for OpenClaw. Zero wasted tokens. Zero vague instructions.
 
-Every bad brief costs you a rework cycle. brief-master extracts 9 dimensions of intent, asks max 3 clarifying questions, applies the right format for your target agent, runs a token efficiency audit, and delivers one clean brief ready to fire.
+Brief Master is an agent brief writer for AI coding workflows. It extracts 9 dimensions of intent, asks max 3 clarifying questions, applies the right format for your target agent, runs a token efficiency audit, and delivers one clean brief ready to fire.
 
 Built for OpenClaw's multi-agent workflow: dev agents, code reviewers, testers, researchers, and cron jobs.
 
 Inspired by [prompt-master](https://github.com/nidhinjs/prompt-master). Built as our own OpenClaw-native implementation.
+
+## Use Cases
+
+- turn a messy request into a precise agent brief
+- make acceptance criteria explicit before an agent starts work
+- capture constraints, non-goals, inputs, and verification steps
+- reduce rework from vague prompts and missing context
 
 ---
 

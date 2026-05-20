@@ -23,6 +23,10 @@ Every missing acceptance criterion is a future rework cycle.
 
 ---
 
+## Credibility Artifact
+
+See [`examples/messy-to-clean-brief.md`](examples/messy-to-clean-brief.md) for a concrete messy request -> clean agent brief example with ACs, constraints, non-goals, and verification commands.
+
 ## The Pipeline
 
 1. Detect the target agent and runtime

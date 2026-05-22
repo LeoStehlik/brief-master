@@ -1,165 +1,164 @@
-# Brief Formats by Agent Type
+# Brief Formats
 
-## Dev / Build Agent — Sprint Brief
+Use these as public-safe templates. Replace placeholders with the user's actual environment only when the user has provided it or it is already part of the current task context.
+
+## Builder Brief
 
 ```markdown
-# Brief: [TASK_ID] — [One-line task description]
+# Brief: [TASK_ID] - [one-line outcome]
 
-## Before doing anything else
-Update your team's status dashboard:
-- Set your status to "working"
-- Set your task to "[one line describing what you're about to do]"
+## Confidence Gate
 
-Before starting ANY work: ask clarifying questions until you are 95% confident
-you can complete this task successfully. Do not start until you have that confidence.
+Before starting implementation, ask clarifying questions until you are 95% confident you can complete this task correctly. If you are already 95% confident, state assumptions and proceed.
 
 ## Task
-[One clear sentence describing what needs to be built/fixed]
+
+[One clear sentence describing what to build or fix.]
 
 ## Context
-[Only what changes what the agent does — 2-5 sentences max]
+
+[Only context that changes the implementation. 2-5 sentences.]
 
 ## Acceptance Criteria
+
 AC1: [specific, testable condition]
-     Verify: [how to check]
+Verify: [command/check]
+
 AC2: [specific, testable condition]
-     Verify: [how to check]
+Verify: [command/check]
+
 AC3: [specific, testable condition]
-     Verify: [how to check]
+Verify: [command/check]
 
 ## Constraints
+
 - [What must not break]
-- [Files/services that must not be touched]
+- [Files/data/services that must not be touched]
+- [Security/privacy boundaries]
 
 ## Non-Goals
+
 - [Explicitly out of scope]
 
 ## Read First
-- [relevant context files]
-- [spec.md if this is a proof-loop task]
+
+- [file/doc/spec/issue link]
 
 ## Environment
-- Repo: [path or SSH command]
-- Branch: [branch name]
-- Service: [restart command if needed]
 
-## When completely finished
-Update your team's status dashboard:
-- Set your status to "done"
-- Set your task to "[summary of what shipped]"
+- Repo/path: [repo/path]
+- Branch: [branch]
+- Runtime/service: [if relevant]
 
-Then notify the orchestrator:
-[your system's completion notification command]
+## Deliver
+
+- Changed files
+- Verification output
+- Known residual risks
 ```
 
----
-
-## Code Review Agent Brief
+## Reviewer / Verifier Brief
 
 ```markdown
-# Review Brief: [TASK_ID]
+# Review: [TASK_ID]
 
-Before reviewing, ask clarifying questions if anything is unclear (95% confidence rule).
+## Role
 
-## Your Role
-You are the verifier. You DO NOT write production code. You DO NOT propose fixes inline.
-You verdict each AC and document problems precisely so the dev agent can fix them.
+You are the verifier. Do not implement fixes. Verify the acceptance criteria from a fresh session and report evidence.
 
 ## Read First
-- .agent/tasks/[TASK_ID]/spec.md — the frozen ACs
-- Any existing verdict.json
 
-## Live Test Required
-This is NOT a static code review. You must:
-1. Connect to the running app at [URL]
-2. Log in with test credentials
-3. Verify each AC by actually using the feature
+- [spec or brief]
+- [existing verdict/problems if any]
 
-## Acceptance Criteria to Verify
-[Copy ACs from spec.md]
+## Acceptance Criteria To Verify
+
+AC1: [copy from spec]
+AC2: [copy from spec]
+AC3: [copy from spec]
+
+## Required Checks
+
+- [test command]
+- [manual/browser/API check]
+- [regression check]
 
 ## Output
-Write to .agent/tasks/[TASK_ID]/verdict.json:
-{
-  "task_id": "[TASK_ID]",
-  "phase": "review",
-  "agent": "reviewer",
-  "timestamp": "[ISO]",
-  "overall": "PASS|FAIL",
-  "criteria": [
-    { "id": "AC1", "status": "PASS|FAIL|UNKNOWN", "note": "[evidence]" }
-  ]
-}
 
-If any AC is FAIL or UNKNOWN, write .agent/tasks/[TASK_ID]/problems.md with
-specific file/line references.
+Return:
+- PASS/FAIL/UNKNOWN for each AC
+- Evidence for each verdict
+- File/line references for failures when applicable
+- Test commands run and exact result
 ```
 
----
-
-## Acceptance Test Agent Brief
+## Research Brief
 
 ```markdown
-# Test Brief: [TASK_ID]
+# Research: [topic]
 
-Before starting, verify:
-1. [migration/schema check if applicable]
-   → Must show no pending changes. If pending: STOP.
+## Question
 
-## Read First
-- .agent/tasks/[TASK_ID]/spec.md
-- .agent/tasks/[TASK_ID]/verdict.json (reviewer's findings)
-- .agent/tasks/[TASK_ID]/problems.md (if exists)
+[Specific question to answer.]
 
-## Run Full Suite
-[test command — must run ALL previous tests, not just new ones]
+## Scope
 
-Report format: "Sprint 1 ✅ · Sprint 2 ✅ · Sprint N ⚠️"
-ALL previous tests must pass before new results mean anything.
+- Include: [source types, date range, domains, handles]
+- Exclude: [known noise]
 
-## Update Verdict
-Update .agent/tasks/[TASK_ID]/verdict.json with test findings.
-If FAIL: update problems.md with specific test failures.
+## Source Quality
+
+- Prefer primary sources.
+- Include URLs and publication dates.
+- Separate observed facts from inference.
+- Flag uncertainty.
+
+## Output
+
+- Short answer
+- Evidence table
+- Implications
+- Open questions
 ```
 
----
-
-## Research Agent Brief (Cron)
+## Cron / Scheduled Agent Brief
 
 ```markdown
-Research [specific topic] and report findings.
+# Scheduled Task: [name]
 
-Read first:
-- [relevant observations/memory files]
-- [context files for this domain]
+## Goal
 
-Focus: [specific angle or question]
-Depth: [surface overview / deep dive / comparison]
-Output: [where and how to deliver — message, file, etc.]
-Source quality: every source needs URL + publication date.
+[What should be checked or produced.]
+
+## Steps
+
+1. [Exact action]
+2. [Exact action]
+3. [Exact action]
+
+## Success Condition
+
+[What normal healthy output means.]
+
+## Alert Condition
+
+Send a message only if:
+- [condition]
+- [condition]
+
+If everything is healthy, return `NO_REPLY`.
+
+## Output
+
+- Write report to [path] if needed.
+- Include exact failure evidence if alerting.
 ```
-
----
-
-## Orchestrator Cron Job
-
-```markdown
-You are [role]. [Specific automated task description].
-
-[Exact steps with file paths, commands, or API calls]
-
-If everything is as expected: reply NO_REPLY.
-If [condition]: [specific action — send message, restart service, etc].
-```
-
----
 
 ## Token Efficiency Checklist
 
-Before delivering any brief, check:
-- [ ] Can any sentence be removed without changing what the agent does?
-- [ ] Are all file paths absolute (not relative or vague)?
-- [ ] Are all machine/environment references explicit?
-- [ ] Are ACs testable by a third party who didn't write them?
-- [ ] Is the 95% confidence gate included (for dev agents)?
-- [ ] Are status update blocks included (start + end)?
+- Can any sentence be removed without changing what the agent does?
+- Are paths, branches, commands, and URLs specific where needed?
+- Are ACs testable by someone who did not write the code?
+- Are constraints and non-goals explicit?
+- Are private local assumptions excluded unless required?
+- Is the final output shape clear?

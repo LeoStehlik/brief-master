@@ -1,8 +1,9 @@
 ---
 name: brief-master
-description: Writes sharp, precise agent briefs and prompts for OpenClaw agents and cron jobs. Use when asked to write a brief for any agent — dev agents, code reviewers, testers, researchers — or when writing a cron job prompt, a sessions_spawn task, or any instruction that will be executed by an AI agent. Extracts 9 dimensions of intent, asks max 3 clarifying questions, runs a token efficiency audit, and delivers one clean brief. Prevents vague briefs that cause agent failures. Triggers on "write a brief", "write a prompt for", "help me write the agent brief", "draft the cron job", "write the sessions_spawn task".
+description: "Write precise execution briefs for agents, cron jobs, reviewers, researchers, and delegated coding tasks."
+metadata:
+  version: "0.2.0"
 ---
-
 # Brief Master
 
 Write agent briefs that agents actually execute correctly.

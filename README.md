@@ -10,6 +10,13 @@ Built for OpenClaw's multi-agent workflow: dev agents, code reviewers, testers, 
 
 Inspired by [prompt-master](https://github.com/nidhinjs/prompt-master). Built as our own OpenClaw-native implementation.
 
+
+## Safety Boundary
+
+Brief Master only drafts execution briefs. Review the generated brief before handing it to an autonomous agent, especially commands, file paths, credentials, scheduled jobs, external services, and anything that changes code or system state.
+
+The skill must not invent access, approval, hostnames, secrets, destructive commands, or cron schedules. If execution needs elevated privileges or persistent automation, the brief should say that explicit approval is required.
+
 ## Use Cases
 
 - turn a messy request into a precise agent brief

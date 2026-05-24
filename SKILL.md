@@ -2,7 +2,7 @@
 name: brief-master
 description: "Write precise execution briefs for agents, cron jobs, reviewers, researchers, and delegated coding tasks."
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 # Brief Master
 
@@ -12,6 +12,13 @@ Every wasted token is a wasted API call. Every vague word is a future bug. Every
 
 Read `references/9-dimensions.md` before extracting intent.
 Read `references/brief-formats.md` for the right format per agent type.
+
+
+## Safety Boundary
+
+This skill writes briefs only. A generated brief can instruct another agent to edit code, run commands, schedule jobs, or use external services, so the user or orchestrator must review the final brief before execution.
+
+Do not invent credentials, secret names, hostnames, destructive commands, cron schedules, repository permissions, or approval status. If a brief would require elevated access, remote execution, persistent automation, or public posting, mark that as requiring explicit approval in the brief.
 
 ## The Pipeline
 
